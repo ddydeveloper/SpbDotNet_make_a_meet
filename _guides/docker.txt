@@ -1,0 +1,25 @@
+# Commands
+docker ps
+docker rm $(docker ps -q -a)
+docker rmi $(docker images -q -a)
+docker exec -it
+
+# Run seq
+docker run --name seq -e ACCEPT_EULA=Y -v seq-volume:/data -p 5342:80 -p 5341:5341 -d datalust/seq:latest
+
+# Run influx db
+docker run -p 8086: 8086 -d -v influxdb: /var/lib/influxdb influxdb
+
+# Run grafana
+docker run -d -p 3000:3000 --name grafana grafana/grafana
+
+# Run mssql
+
+# Run RabbitMQ
+docker run --name rabbitmq --hostname my-rabbit -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=sa -e RABBITMQ_DEFAULT_PASS=P@ssw0rd -v rabbitmq-volume:/var/lib/rabbitmq -d rabbitmq:management
+
+# Run mssql
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=P@ssw0rd" -p 1433:1433 --name mssql -v mssql:/var/opt/mssql -d mcr.microsoft.com/mssql/server
+
+# Run mongo
+docker run --name mongodb_second -p 27019:27017 -v mongo-volume:/data/db -d mongo
