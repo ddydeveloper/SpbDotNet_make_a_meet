@@ -3,7 +3,6 @@ FROM microsoft/mssql-server-linux
 RUN mkdir -p /opt/mssql-scripts
 
 COPY ./post-deployment.sql /opt/mssql-scripts
-COPY ./data.csv /opt/mssql-scripts
 
 ENV SA_PASSWORD=P@ssw0rd
 ENV ACCEPT_EULA=Y
