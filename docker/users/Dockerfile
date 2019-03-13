@@ -2,11 +2,11 @@ FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY UsersApi/*.sln .
-COPY UsersApi/UsersApi/*.csproj ./MeetingsApi/
+COPY *.sln .
+COPY UsersApi/*.csproj ./UsersApi/
 
 # copy everything else and build app
-COPY UsersApi/UsersApi/. ./UsersApi/
+COPY UsersApi/. ./UsersApi/
 WORKDIR /app/UsersApi
 RUN dotnet restore
 RUN dotnet publish -o out

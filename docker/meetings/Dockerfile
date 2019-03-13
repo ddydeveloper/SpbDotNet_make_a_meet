@@ -2,11 +2,11 @@ FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY MeetingsApi/*.sln .
-COPY MeetingsApi/MeetingsApi/*.csproj ./MeetingsApi/
+COPY *.sln .
+COPY MeetingsApi/*.csproj ./MeetingsApi/
 
 # copy everything else and build app
-COPY MeetingsApi/MeetingsApi/. ./MeetingsApi/
+COPY MeetingsApi/. ./MeetingsApi/
 WORKDIR /app/MeetingsApi
 RUN dotnet restore
 RUN dotnet publish -o out
