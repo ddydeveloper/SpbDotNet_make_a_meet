@@ -1,29 +1,21 @@
 version: '3'
 
 services:
-  seq:
+  seq-logs:
     restart: always      
     image: datalust/seq:latest
-    container_name: seq
+    container_name: seq-logs
     environment:
       - ACCEPT_EULA=Y
     ports:
       - "5341:5341"
       - "8005:80"
-  usersdb:
+  sqlserver:
     restart: always
-    image: make-a-meet/usersdb
+    image: make-a-meet/sqlserver
     build:
       dockerfile: Dockerfile
-      context: ./users/database
-    ports:
-      - "1434:1433"
-  meetingsdb:
-    restart: always
-    image: make-a-meet/meetingsdb
-    build:
-      dockerfile: Dockerfile
-      context: ./meetings/database
+      context: ./database
     ports:
       - "1435:1433"
   client:
@@ -49,13 +41,13 @@ services:
       context: ./users
     container_name: usersapi
     environment:
-      - ConnectionStrings__UsersDb=Server=usersdb;DataBase=Users;User Id=sa;Password=P@ssw0rd;Connection Timeout=30;
-      - ConnectionStrings__Seq=http://seq/
+      - ConnectionStrings__UsersDb=Server=sqlserver;DataBase=Users;User Id=sa;Password=P@ssw0rd;Connection Timeout=30;
+      - ConnectionStrings__Seq=http://seq-logs/
     ports:
       - "8001:80"
     depends_on:
-      - usersdb
-      - seq
+      - sqlserver
+      - seq-logs
   meetingsapi:
     restart: always
     image: make-a-meet/meetingsapi
@@ -64,10 +56,10 @@ services:
       context: ./meetings
     container_name: meetingsapi
     environment:
-      - ConnectionStrings__MeetingsDb=Server=meetingsdb;DataBase=Meetings;User Id=sa;Password=P@ssw0rd;Connection Timeout=30;
-      - ConnectionStrings__Seq=http://seq/
+      - ConnectionStrings__MeetingsDb=Server=sqlserver;DataBase=Meetings;User Id=sa;Password=P@ssw0rd;Connection Timeout=30;
+      - ConnectionStrings__Seq=http://seq-logs/
     ports:
       - "8002:80"
     depends_on:
-      - meetingsdb
-      - seq
+      - sqlserver
+      - seq-logs
