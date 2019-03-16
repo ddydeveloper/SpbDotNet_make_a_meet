@@ -7,11 +7,11 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
   # Prepare tests images
-  - docker build -t ddydeveloper/make-a-meet-client-test -f ./client/Dockerfile.dev ./client
+  # - docker build -t ddydeveloper/make-a-meet-client-test -f ./3_docker/client/Dockerfile.dev ./3_docker/client
 
 script:
   # Run tests
-  - docker run ddydeveloper/make-a-meet-client-test npm test
+  # - docker run ddydeveloper/make-a-meet-client-test npm test
 
 deploy:
   provider: script
