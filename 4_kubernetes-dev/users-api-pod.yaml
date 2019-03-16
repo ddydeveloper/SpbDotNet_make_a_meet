@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: users-api-pod
+  labels:
+    component: web
+spec:
+  containers: 
+    - name: users-api
+      image: ddydeveloper/make-a-meet-users-api
+      env:
+        - name: ConnectionStrings__UsersDb
+          value: Server=database-node-port;DataBase=Users;User Id=sa;Password=P@ssw0rd;Connection Timeout=30;
+        - name: ConnectionStrings__Redis
+          value: redis-pod
+      ports:
+        - containerPort: 8001

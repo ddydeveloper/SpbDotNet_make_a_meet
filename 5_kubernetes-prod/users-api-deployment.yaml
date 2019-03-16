@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      component: users-api
+  template:
+    metadata:
+      labels:
+        component: users-api
+    spec:
+      containers: 
+        - name: users-api
+          image: ddydeveloper/make-a-meet-users-api
+          ports:
+            - containerPort: 8001
+          env:
+            - name: ConnectionStrings__UsersDb
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: USERS_DB
+            - name: ConnectionStrings__ElasticSearch
+              value: http://elasticsearch-client.logging.svc.cluster.local
+            - name: ConnectionStrings__Redis
+              value: redis-cluster-ip-service

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meetings-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      component: meetings-api
+  template:
+    metadata:
+      labels:
+        component: meetings-api
+    spec:
+      containers: 
+        - name: meetings-api
+          image: ddydeveloper/make-a-meet-meetings-api
+          ports:
+            - containerPort: 8002
+          env:
+            - name: ConnectionStrings__MeetingsDb
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: MEETINGS_DB
+            - name: ConnectionStrings__ElasticSearch
+              value: http://elasticsearch-client.logging.svc.cluster.local
+            - name: ConnectionStrings__Redis
+              value: redis-cluster-ip-service

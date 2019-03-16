@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      component: database
+  template:
+    metadata:
+      labels:
+        component: database
+    spec:
+      volumes:
+        - name: database-storage
+          persistentVolumeClaim: 
+            claimName: database-persistent-volume-claim
+      containers: 
+        - name: database
+          image: ddydeveloper/make-a-meet-database
+          command: ["sh", "/usr/config/entrypoint.sh"]
+          ports:
+            - containerPort: 1433         
+          volumeMounts:
+           - name: database-storage
+             mountPath: /var/opt/mssql/data
+             subPath: mssql
+          env:
+            - name: ACCEPT_EULA
+              value: 'Y'
+            - name: SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: SA_PASSWORD

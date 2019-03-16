@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-api-node-port
+spec:
+  type: NodePort
+  ports:
+    - port: 8001
+      targetPort: 8001
+  selector:
+    component: web

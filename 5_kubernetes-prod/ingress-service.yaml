@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations: 
+    nginx.ingress.kubernetes.io/affinity: cookie
+    nginx.ingress.kubernetes.io/session-cookie-hash: sha1
+    nginx.ingress.kubernetes.io/session-cookie-name: route
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    certmanager.k8s.io/acme-http01-edit-in-place: 'true'
+spec:
+  tls:
+    - hosts:
+        - meet-to-me.com
+        - www.meet-to-me.com
+      secretName: meet-to-me-ru
+  rules:
+    - host: meet-to-me.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
+          - path: /api/users
+            backend:              
+              serviceName: users-api-cluster-ip-service
+              servicePort: 8001
+          - path: /api/meetings
+            backend:              
+              serviceName: meetings-api-cluster-ip-service
+              servicePort: 8002
+    - host: www.meet-to-me.com      
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
+          - path: /api/users
+            backend:              
+              serviceName: users-api-cluster-ip-service
+              servicePort: 8001
+          - path: /api/meetings
+            backend:              
+              serviceName: meetings-api-cluster-ip-service
+              servicePort: 8002
