@@ -2,9 +2,9 @@ sudo: required
 services:
   - docker
 
-before_install:
+# before_install:
   # Login to docker hub
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
   # Prepare tests images
   # - docker build -t ddydeveloper/make-a-meet-client-test -f ./3_docker/client-app/Dockerfile ./3_docker/client-app
@@ -12,7 +12,7 @@ before_install:
 script:
   # Run tests
   # - docker run ddydeveloper/make-a-meet-client-test npm test
-  - docker build -t ddydeveloper/make-a-meet-client-test -f ./3_docker/client-app/Dockerfile ./3_docker/client-app
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 deploy:
   provider: script
