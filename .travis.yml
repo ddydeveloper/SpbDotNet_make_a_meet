@@ -7,7 +7,7 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
   # Prepare tests images
-  - docker build -t ddydeveloper/make-a-meet-client-test -f ./3_docker/client-app/Dockerfile.dev ./3_docker/client-app
+  - docker build -t ddydeveloper/make-a-meet-client-test -f ./3_docker/client-app/Dockerfile ./3_docker/client-app
 
 script:
   # Run tests
