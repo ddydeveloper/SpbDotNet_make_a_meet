@@ -19,7 +19,7 @@ before_install:
   # Configure gloud environment
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
-  - gcloud config set project PiterDotNext
+  - gcloud config set project piterdotnext
   - gcloud config set compute/zone europe-north1-a
   - gcloud container clusters get-credentials meetings-cluster
 
