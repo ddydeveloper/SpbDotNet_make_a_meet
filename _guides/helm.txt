@@ -1,0 +1,13 @@
+Follow quick start guide "From script" section:
+- curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
+- chmod 700 get_helm.sh
+- ./get_helm.sh
+
+Create tiller service-account: 
+- kubectl create serviceaccount --namespace kube-system tiller
+
+Create tiller service-account admin role binding: 
+- kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+
+Init helm with tiller: 
+- helm init --service-account tiller --upgrade
