@@ -1,7 +1,0 @@
-﻿CREATE TABLE [dbo].[Participants]
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY(0,1), 
-    [MeetingId] INT NOT NULL, 
-    [UserId] INT NOT NULL, 
-    [Created] DATETIME NOT NULL DEFAULT (SYSDATETIMEOFFSET())
-)
