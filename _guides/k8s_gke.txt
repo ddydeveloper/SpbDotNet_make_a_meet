@@ -6,12 +6,12 @@
 	- docker run -it -v ${pwd}:/app ruby:2.3 sh
 	- gem install travis
 	- travis login
-	- travis encrypt-file service-account.json -r ddydeveloper/multi-k8s
+	- travis encrypt-file service-account.json -r ddydeveloper/make-a-meet
 	
 4. Configure GKE console:
 	- gcloud config set project k8s-ddy
 	- gcloud config set compute/zone europe-north1-a	
-	- gcloud container clusters get-credentials task-management-cluster
+	- gcloud container clusters get-credentials meetings-cluster
 	
 5. Set up helm for GKE
 	- follow quick start guide "From script" section:

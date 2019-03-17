@@ -9,4 +9,4 @@ kubectl set image deployments/users-api-deployment    users-api=ddydeveloper/mak
 kubectl set image deployments/meetings-api-deployment meetings-api=ddydeveloper/make-a-meet-meetings-api:$SHA
 
 # Is used for setting up of the database workload
-# kubectl set image deployments/database-deployment  database=ddydeveloper/task-management-mssql:$SHA
+# kubectl set image deployments/database-deployment  database=ddydeveloper/make-a-meet-database:$SHA
