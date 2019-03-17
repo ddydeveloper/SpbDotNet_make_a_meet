@@ -1,0 +1,1 @@
+/opt/mssql/bin/sqlservr & sleep 15 && /opt/mssql-tools/bin/sqlcmd -S localhost -d master -U SA -P $SA_PASSWORD -i /usr/config/setup.sql && wait
