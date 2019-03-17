@@ -6,22 +6,22 @@ services:
 env: 
   global:
     - SHA=$(git rev-parse HEAD)
-#    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 before_install:
   # unencrypt service-account to access gcloud
-#   - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
+   - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
   
   # Setting up gcloud sdk 
-#  - curl https://sdk.cloud.google.com | bash > /dev/null;
-#  - source $HOME/google-cloud-sdk/path.bash.inc
+  - curl https://sdk.cloud.google.com | bash > /dev/null;
+  - source $HOME/google-cloud-sdk/path.bash.inc
   
   # Configure gloud environment
-#  - gcloud components update kubectl
-#  - gcloud auth activate-service-account --key-file service-account.json
-#  - gcloud config set project PiterDotNext
-#  - gcloud config set compute/zone europe-north1-a
-#  - gcloud container clusters get-credentials meetings-cluster
+  - gcloud components update kubectl
+  - gcloud auth activate-service-account --key-file service-account.json
+  - gcloud config set project PiterDotNext
+  - gcloud config set compute/zone europe-north1-a
+  - gcloud container clusters get-credentials meetings-cluster
 
 script:
   # Docker hub login 
@@ -39,8 +39,8 @@ deploy:
     on:
       branch: master
   # Force k8s updates
-#  - provider: script
-#    script: bash ./deploy-k8s.sh
-#    on:
-#      branch: master
+  - provider: script
+    script: bash ./deploy-k8s.sh
+    on:
+      branch: master
   
