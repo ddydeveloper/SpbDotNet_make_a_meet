@@ -23,8 +23,8 @@ deploy:
     on:
       branch: master
   # Force k8s updates
-  #- provider: script
-    #script: bash ./_deploy/deploy-k8s.sh
-    #on:
-      #branch: master
+#  - provider: script
+#    script: bash ./_deploy/deploy-k8s.sh
+#    on:
+#      branch: master
   
