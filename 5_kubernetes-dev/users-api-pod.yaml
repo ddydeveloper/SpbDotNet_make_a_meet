@@ -14,4 +14,4 @@ spec:
         - name: ConnectionStrings__Redis
           value: redis-pod
       ports:
-        - containerPort: 8001
+        - containerPort: 80
