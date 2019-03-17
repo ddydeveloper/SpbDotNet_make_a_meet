@@ -14,17 +14,17 @@ script:
 deploy:
   # Push latest images
   - provider: script
-    script: bash ./deploy/deploy.sh
+    script: bash ./_deploy/deploy.sh
     on:
       branch: master
   # Push tagged with the SHA value images
   - provider: script
-    script: bash ./deploy/deploy-v.sh
+    script: bash ./_deploy/deploy-v.sh
     on:
       branch: master
   # Force k8s updates
   #- provider: script
-    #script: bash ./deploy/deploy-k8s.sh
+    #script: bash ./_deploy/deploy-k8s.sh
     #on:
       #branch: master
   
