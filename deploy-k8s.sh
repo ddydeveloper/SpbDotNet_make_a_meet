@@ -5,8 +5,8 @@ kubectl create secret generic database-secret --from-literal SA_PASSWORD="P@ssw0
 # Apply workloads and services
 kubectl apply -f 5_kubernetes
 kubectl set image deployments/client-deployment       client=ddydeveloper/make-a-meet-client:$SHA
-kubectl set image deployments/users-api-deployment    users-api=ddydeveloper/make-a-meet-users-api:$SHA
-kubectl set image deployments/meetings-api-deployment meetings-api=ddydeveloper/make-a-meet-meetings-api:$SHA
+kubectl set image deployments/users-api-deployment    users=ddydeveloper/make-a-meet-users-api:$SHA
+kubectl set image deployments/meetings-api-deployment meetings=ddydeveloper/make-a-meet-meetings-api:$SHA
 
 # Is used for setting up of the database workload
 # kubectl set image deployments/database-deployment  database=ddydeveloper/make-a-meet-database:$SHA
