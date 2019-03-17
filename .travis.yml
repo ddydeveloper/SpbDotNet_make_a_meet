@@ -35,7 +35,7 @@ deploy:
       branch: master
   # Push tagged with the SHA value images
   - provider: script
-    script: bash ./deploy-v.sh
+    script: bash ./deploy-version.sh
     on:
       branch: master
   # Force k8s updates
