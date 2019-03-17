@@ -24,11 +24,11 @@ spec:
             backend:
               serviceName: client-cluster-ip-service
               servicePort: 3000
-          - path: /api/users
+          - path: /users
             backend:              
               serviceName: users-api-cluster-ip-service
               servicePort: 8001
-          - path: /api/meetings
+          - path: /meetings
             backend:              
               serviceName: meetings-api-cluster-ip-service
               servicePort: 8002
@@ -39,11 +39,11 @@ spec:
             backend:
               serviceName: client-cluster-ip-service
               servicePort: 3000
-          - path: /api/users
+          - path: /users
             backend:              
               serviceName: users-api-cluster-ip-service
               servicePort: 8001
-          - path: /api/meetings
+          - path: /meetings
             backend:              
               serviceName: meetings-api-cluster-ip-service
               servicePort: 8002
