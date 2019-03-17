@@ -1,12 +1,30 @@
 sudo: required
+
 services:
   - docker
 
+env: 
+  global:
+    - SHA=$(git rev-parse HEAD)
+
 script:
+  # Docker hub login 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    branch: master
+  # Push latest images
+  - provider: script
+    script: bash ./deploy/deploy.sh
+    on:
+      branch: master
+  # Push tagged with the SHA value images
+  - provider: script
+    script: bash ./deploy/deploy-v.sh
+    on:
+      branch: master
+  # Force k8s updates
+  #- provider: script
+    #script: bash ./deploy/deploy-k8s.sh
+    #on:
+      #branch: master
+  
