@@ -13,7 +13,7 @@ spec:
         component: users-api
     spec:
       containers: 
-        - name: users-api
+        - name: users
           image: ddydeveloper/make-a-meet-users-api
           ports:
             - containerPort: 8001

@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels: 
-      component: database
+      component: db
   template:
     metadata:
       labels:
-        component: database
+        component: db
     spec:
       volumes:
         - name: database-storage
