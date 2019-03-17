@@ -9,7 +9,7 @@
 	- travis encrypt-file service-account.json -r ddydeveloper/make-a-meet
 	
 4. Configure GKE console:
-	- gcloud config set project k8s-ddy
+	- gcloud config set project PiterDotNext
 	- gcloud config set compute/zone europe-north1-a	
 	- gcloud container clusters get-credentials meetings-cluster
 	
