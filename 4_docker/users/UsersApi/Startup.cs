@@ -66,7 +66,7 @@ namespace UsersApi
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/api/swagger/v1/swagger.json", "v1");
-                options.RoutePrefix = "api/swagger/";
+                options.RoutePrefix = "api/swagger";
             });
         }
     }
