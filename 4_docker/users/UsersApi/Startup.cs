@@ -62,10 +62,10 @@ namespace UsersApi
                 .UseHttpsRedirection()
                 .UseMvc();
 
-            app.UseSwagger();
-
+            app.UseSwagger(c => c.RouteTemplate = "api/{documentName}/swagger.json");
             app.UseSwaggerUI(options =>
             {
+                options.RoutePrefix = "api";
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
                 options.RoutePrefix = "swagger/ui";
             });
