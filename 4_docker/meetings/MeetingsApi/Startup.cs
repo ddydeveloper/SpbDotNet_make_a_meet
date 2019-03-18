@@ -59,6 +59,12 @@ namespace MeetingsApi
                 app.UseHsts();
             }
 
+            app.Use((context, next) =>
+            {
+                context.Request.PathBase = new PathString("/meetings");
+                return next();
+            });
+            
             app.UseCors("All")
                 .UseHttpsRedirection()
                 .UseMvc();
