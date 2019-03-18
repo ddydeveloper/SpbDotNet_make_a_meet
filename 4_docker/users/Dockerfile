@@ -4,9 +4,8 @@ WORKDIR /app
 # copy csproj and restore as distinct layers
 COPY *.sln .
 COPY UsersApi/*.csproj ./UsersApi/
-
-# copy everything else and build app
 COPY UsersApi/. ./UsersApi/
+
 WORKDIR /app/UsersApi
 RUN dotnet restore
 RUN dotnet publish -o out
