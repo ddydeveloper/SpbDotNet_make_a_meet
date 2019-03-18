@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MeetingsApi.Controllers
 {
-    [Route("api/meetings/[controller]")]
+    [Route("meetings-api/[controller]")]
     [ApiController]
     public class MeetingsController : ControllerBase
     {
