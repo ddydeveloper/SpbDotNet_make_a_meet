@@ -62,11 +62,11 @@ namespace UsersApi
                 .UseHttpsRedirection()
                 .UseMvc();
 
-            app.UseSwagger(c => c.RouteTemplate = "api/swagger/{documentName}/swagger.json");
+            app.UseSwagger(c => c.RouteTemplate = "swaggerapi/{documentName}/swagger.json");
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/api/swagger/v1/swagger.json", "v1");
-                options.RoutePrefix = "api/swagger";
+                options.SwaggerEndpoint("/swaggerapi/v1/swagger.json", "v1");
+                options.RoutePrefix = "swaggerapi";
             });
         }
     }
