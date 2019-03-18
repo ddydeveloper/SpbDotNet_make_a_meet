@@ -63,11 +63,11 @@ namespace MeetingsApi
                 .UseHttpsRedirection()
                 .UseMvc();
 
-            app.UseSwagger(c => c.RouteTemplate = "swaggerapi/{documentName}/swagger.json");
+            app.UseSwagger(c => c.RouteTemplate = "api/meetings/swagger/{documentName}/swagger.json");
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swaggerapi/v1/swagger.json", "v1");
-                options.RoutePrefix = "swaggerapi";
+                options.SwaggerEndpoint("/api/meetings/swagger/v1/swagger.json", "v1");
+                options.RoutePrefix = "api/meetings/swagger";
             });
         }
     }
