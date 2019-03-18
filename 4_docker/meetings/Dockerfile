@@ -1,9 +1,10 @@
 FROM microsoft/dotnet:2.1-sdk AS build
-WORKDIR /app/MeetingsApi
 
+WORKDIR /app
 COPY *.sln .
 COPY MeetingsApi/. ./MeetingsApi/
 
+WORKDIR /app/MeetingsApi
 RUN dotnet restore
 RUN dotnet publish -o out
 
