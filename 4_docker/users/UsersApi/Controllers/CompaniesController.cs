@@ -6,7 +6,7 @@ using UsersApi.Services;
 
 namespace UsersApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("users-api/[controller]")]
     [ApiController]
     public class CompaniesController : ControllerBase
     {
