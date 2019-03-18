@@ -4,7 +4,6 @@ using MeetingsApi.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
@@ -59,12 +58,6 @@ namespace MeetingsApi
             {
                 app.UseHsts();
             }
-
-            app.Use((context, next) =>
-            {
-                context.Request.PathBase = new PathString("/meetings");
-                return next();
-            });
             
             app.UseCors("All")
                 .UseHttpsRedirection()
