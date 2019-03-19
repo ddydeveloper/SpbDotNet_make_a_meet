@@ -5,7 +5,7 @@ metadata:
 spec:
   secretName: meet-to-me-ru
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt-stage
     kind: ClusterIssuer
   commonName: meet-to-me.ru
   dnsNames:
