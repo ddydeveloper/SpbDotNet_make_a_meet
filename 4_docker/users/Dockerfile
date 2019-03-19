@@ -3,7 +3,6 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY UsersApi/*.csproj ./UsersApi/
 COPY UsersApi/. ./UsersApi/
 
 WORKDIR /app/UsersApi

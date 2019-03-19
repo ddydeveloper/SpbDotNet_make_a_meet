@@ -29,7 +29,7 @@ services:
       - USERS_API_URL=api;
       - MEETINGS_API_URL=api;
     ports:
-      - "3000:3000"
+      - "3005:3000"
     depends_on:
       - usersapi
       - meetingsapi
@@ -44,7 +44,7 @@ services:
       - ConnectionStrings__UsersDb=Server=sqlserver;DataBase=Users;User Id=sa;Password=P@ssw0rd;Connection Timeout=30;
       - ConnectionStrings__Seq=http://seq-logs/
     ports:
-      - "8001:80"
+      - "5001:8001"
     depends_on:
       - sqlserver
       - seq-logs
@@ -59,7 +59,7 @@ services:
       - ConnectionStrings__MeetingsDb=Server=sqlserver;DataBase=Meetings;User Id=sa;Password=P@ssw0rd;Connection Timeout=30;
       - ConnectionStrings__Seq=http://seq-logs/
     ports:
-      - "8002:80"
+      - "5002:8002"
     depends_on:
       - sqlserver
       - seq-logs
