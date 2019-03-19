@@ -5,7 +5,7 @@ metadata:
 spec:
   secretName: book-to-meet-com
   issuerRef:
-    name: letsencrypt-stage
+    name: letsencrypt-prod
     kind: ClusterIssuer
   commonName: book-to-meet.com
   dnsNames:
