@@ -13,11 +13,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - meet-to-me.ru
-        - www.meet-to-me.ru
-      secretName: meet-to-me-ru
+        - book-to-meet.com
+        - www.book-to-meet.com
+      secretName: book-to-meet-com
   rules:
-    - host: meet-to-me.ru
+    - host: book-to-meet.com
       http:
         paths:
           - path: /
@@ -32,7 +32,7 @@ spec:
             backend:              
               serviceName: meetings-api-cluster-ip-service
               servicePort: 8002
-    - host: www.meet-to-me.ru      
+    - host: www.book-to-meet.com      
       http:
         paths:
           - path: /
