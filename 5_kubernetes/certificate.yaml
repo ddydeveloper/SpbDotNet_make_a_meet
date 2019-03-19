@@ -1,9 +1,9 @@
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
-  name: meet-to-me-ru-tls-certificate
+  name: meet-to-me-ru-tls
 spec:
-  secretName: meet-to-me-ru-secret
+  secretName: meet-to-me-ru
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
