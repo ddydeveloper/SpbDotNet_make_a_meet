@@ -15,7 +15,7 @@ spec:
     - hosts:
         - meet-to-me.ru
         - www.meet-to-me.ru
-      secretName: meet-to-me-ru
+      secretName: meet-to-me-ru-secret
   rules:
     - host: meet-to-me.ru
       http:
